@@ -1,0 +1,33 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "app",
+  "author": "Tyler Wolf Leonhardt",
+  "private": true,
+  "devDependencies": {
+    "base_": "1.0.0",
+    "webpack_": "1.0.0"
+  },
+  "dependencies": {
+    "lib": "1.0.0"
+  },
+  "scripts": {
+    "build": "ttsc -b",
+    "build:analysis": "yarn build && yarn webpack -r @babel/register --config target/ts/_build/webpack.analysis.js --profile",
+    "build:dev": "yarn build && yarn webpack -r @babel/register --config target/ts/_build/webpack.dev.js",
+    "build:release_final": "yarn build && yarn webpack -r @babel/register --config target/ts/_build/webpack.release_final.js",
+    "build:release": "yarn build && yarn webpack -r @babel/register --config target/ts/_build/webpack.release.js",
+    "build:stats": "yarn build && yarn webpack -r @babel/register --config target/ts/_build/webpack.stats.js --profile",
+    "clean": "yarn clean:node_modules & yarn clean:target",
+    "clean:node_modules": "rimraf node_modules",
+    "clean:target": "rimraf target",
+    "lint": "eslint ts/**",
+    "serve:dev": "webpack-dev-server -r @babel/register --config target/ts/_build/webpack.dev.js --liveReload false",
+    "serve:release_final": "webpack-dev-server -r @babel/register --config target/ts/_build/webpack.release_final.js --liveReload false",
+    "watch": "ttsc -b --w"
+  },
+  "sideEffects": [
+    "**/asset.js",
+    "*.css"
+  ]
+}

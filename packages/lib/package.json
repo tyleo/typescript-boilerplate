@@ -1,0 +1,29 @@
+{
+  "name": "lib",
+  "version": "1.0.0",
+  "description": "lib",
+  "author": "Tyler Wolf Leonhardt",
+  "private": true,
+  "main": "./target/ts/index.js",
+  "types": "./target/ts/index.d.ts",
+  "devDependencies": {
+    "base_": "1.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/__tests__/**/*.[j]s?(x)",
+      "**/?(*.)+(spec|test).[j]s?(x)"
+    ]
+  },
+  "scripts": {
+    "build": "ttsc -b",
+    "clean": "yarn clean:node_modules & yarn clean:target",
+    "clean:node_modules": "rimraf node_modules",
+    "clean:target": "rimraf target",
+    "lint": "eslint ts/**",
+    "test": "jest",
+    "watch": "ttsc -b --w"
+  },
+  "sideEffects": false
+}
